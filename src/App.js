@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Sidebar from './Sidebar';
+import MenuList from './Menu/MenuList';
+import MenuList from './Menu/MenuList';
+
+
 
 class App extends Component {
 
@@ -51,13 +56,14 @@ class App extends Component {
             onClick={this.toggleMenu}
           />
         </header>
-        <aside
-          className={this.state.isMenuOpen ? 'isOpen' : ''}
-          ref={this.handleAsideRef}
-        >
-          <p>aside</p>
-        </aside>
-        <main>main</main>
+        <Sidebar
+          onRef={this.handleAsideRef}
+          isOpen={this.state.isMenuOpen}
+        />
+        <MenuList>
+          <MenuItem title="Dashboard"/>
+          <MenuItem title="Admin panel"/>
+        </MenuList>
       </div>
     );
   }
