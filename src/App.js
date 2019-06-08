@@ -31,7 +31,14 @@ class App extends Component {
 
   handleAsideRef = (node) => {
     this.aside = node;
-    document.addEventListener('click', this.onAsideClick)
+    if (node) {
+      // при создании компонента добавляем слушатель события
+      document.addEventListener('click', this.onAsideClick)
+    } else {
+      // при удалении компонента удаляем слушатель события
+      // node === null
+      document.removeEventListener('click', this.onAsideClick)
+    }
   }
 
   render() {
