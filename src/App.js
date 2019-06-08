@@ -3,8 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import Sidebar from './Sidebar';
 import MenuList from './Menu/MenuList';
-import MenuItem from './Menu/MenuItem';
-
 
 
 class App extends Component {
@@ -46,6 +44,9 @@ class App extends Component {
     }
   }
 
+  renderMenuItem = (title) =>
+    <li key={title}>{title}</li>
+
   render() {
     return (
       <div className="app">
@@ -60,9 +61,8 @@ class App extends Component {
           onRef={this.handleAsideRef}
           isOpen={this.state.isMenuOpen}
         >
-          <MenuList>
-            <MenuItem title="Dashboard"/>
-            <MenuItem title="Admin panel"/>
+          <MenuList list={['Dashboard', 'Admin panel']}>
+            {this.renderMenuItem}
           </MenuList>
         </Sidebar>
       </div>
