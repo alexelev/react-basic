@@ -1,26 +1,51 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      isMenuOpen: false,
+    };
+  }
+
+  toggleMenu = () => {
+    this.setState(({isMenuOpen}) => ({isMenuOpen: !isMenuOpen}))
+  }
+
+  onAsideClick = (e) => {
+    //debugger;
+    if (e.target.contains(this.aside) && this.state.isMenuOpen) {
+      this.toggleMenu();
+    }
+  }
+
+  handleAsideRef = (node) => {
+    this.aside = node;
+    document.addEventListener('click', this.onAsideClick)
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <header>
+          <button
+            className="fa fa-bars menu-btn"
+            onClick={this.toggleMenu}
+          />
+        </header>
+        <aside
+          className={this.state.isMenuOpen ? 'isOpen' : ''}
+          ref={this.handleAsideRef}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <p>aside</p>
+        </aside>
+        <main>main</main>
+      </div>
+    );
+  }
 }
 
 export default App;

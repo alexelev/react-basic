@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +13,43 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 50px;
+  line-height: 50px;
+  background-color: #297fb8;
+  font-size: 1.5rem;
+  color: white;
+  padding: 0 20px;
+}
+
+aside {
+  position: fixed;
+  width: 200px;
+  bottom: 0;
+  color: white;
+  height: calc(100vh - 50px);
+  transition: all .5s linear;
+  transform: translateX(-100%);
+  background-color: #297fb8;
+  border-right: 1px solid #236fa3;
+  padding: 20px 20px;
+}
+
+aside.isOpen {
+  transform: translateX(0);
+}
+
+.menu-btn {
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
