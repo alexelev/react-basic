@@ -14,7 +14,7 @@ export default class Sidebar extends Component {
           ref={this.handleAsideRef}
           className={this.props.isOpen ? 'isOpen' : ''}
         >
-          <p>aside</p>
+          {this.props.children}
         </aside>
     )
   }

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Sidebar from './Sidebar';
 import MenuList from './Menu/MenuList';
-import MenuList from './Menu/MenuList';
+import MenuItem from './Menu/MenuItem';
 
 
 
@@ -22,8 +22,8 @@ class App extends Component {
 
   onAsideClick = (e) => {
     //debugger;
-    if (!this.aside.contains(e.target) && 
-        !this.menuBtn.contains(e.target) &&  
+    if (!this.aside.contains(e.target) &&
+        !this.menuBtn.contains(e.target) &&
         this.state.isMenuOpen
     ) {
       this.toggleMenu();
@@ -59,11 +59,12 @@ class App extends Component {
         <Sidebar
           onRef={this.handleAsideRef}
           isOpen={this.state.isMenuOpen}
-        />
-        <MenuList>
-          <MenuItem title="Dashboard"/>
-          <MenuItem title="Admin panel"/>
-        </MenuList>
+        >
+          <MenuList>
+            <MenuItem title="Dashboard"/>
+            <MenuItem title="Admin panel"/>
+          </MenuList>
+        </Sidebar>
       </div>
     );
   }
