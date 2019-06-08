@@ -17,9 +17,16 @@ class App extends Component {
 
   onAsideClick = (e) => {
     //debugger;
-    if (e.target.contains(this.aside) && this.state.isMenuOpen) {
+    if (!this.aside.contains(e.target) && 
+        !this.menuBtn.contains(e.target) &&  
+        this.state.isMenuOpen
+    ) {
       this.toggleMenu();
     }
+  }
+
+  handleBtnRef = (node) => {
+    this.menuBtn = node;
   }
 
   handleAsideRef = (node) => {
@@ -32,6 +39,7 @@ class App extends Component {
       <div className="app">
         <header>
           <button
+            ref={this.handleBtnRef}
             className="fa fa-bars menu-btn"
             onClick={this.toggleMenu}
           />
